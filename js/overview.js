@@ -1,77 +1,134 @@
 const form = document.createElement('form');
-document.body.appendChild(form);
 
-const askButton = document.createElement('button');
-form.appendChild(askButton);
-askButton.style.height = '25px';
-askButton.style.width = '100px';
-askButton.innerText = 'Ask Me';
+const div = document.createElement('div');
+
+const h1 = document.createElement('h1');
+const h2 = document.createElement('h2');
+const h3 = document.createElement('h3');
+
+document.body.appendChild(form);
+div.style.padding = '25px';
+form.style.padding = '25px';
+
+const clearAllButTitle = (function() {
+    div.innerHTML = '';
+    form.innerHTML = '';
+    document.body.innerHTML = '';
+    document.body.append(h1);
+    h1.innerText = 'Javascript for Beginners Final Project!';
+    document.body.appendChild(form);
+    form.append(askInput);
+    form.append(askButton);
+    document.body.appendChild(div);
+});
 
 const askInput = addInput('input', 'Ask me anything!');
 
-let randomNumber = Math.floor((Math.random() * 20) + 1);
+const askButton = document.createElement('button');
+form.appendChild(askButton);
+askButton.innerText = 'Ask Me';
 
-let imageArray = new Array();
+const askButton2 = document.createElement('button');
+askButton2.innerText = 'Have another question? Click Me.'
 
-imageArray[0] = new Image();
-imageArray[0].src = 'images/magic8ball_1.png';
+const askButton3 = document.createElement('button');
+askButton3.innerText = 'The question is, do you want to hear them?'
 
-imageArray[1] = new Image();
-imageArray[1].src = 'images/magic8ball_2.png';
+const askButton4 = document.createElement('button');
+askButton4.innerText = "Still want to hear more?";
 
-imageArray[2] = new Image();
-imageArray[2].src = 'images/magic8ball_3.png';
+const eightBallStart = function () {
+    document.body.appendChild(div);
+    div.appendChild(answers[0]);
+};
 
-imageArray[3] = new Image();
-imageArray[3].src = 'images/magic8ball_4.png';
+const second = 1000;
 
-imageArray[4] = new Image();
-imageArray[4].src = 'images/magic8ball_5.png';
+let randomNumber = Math.floor(Math.random() * 20);
 
-imageArray[5] = new Image();
-imageArray[5].src = 'images/magic8ball_6.png';
+let interval = setInterval(changeImage, .25 * second);
 
-imageArray[6] = new Image();
-imageArray[6].src = 'images/magic8ball_7.png';
+let newInterval = function() {setInterval(changeImage, .25 * second)};
 
-imageArray[7] = new Image();
-imageArray[7].src = 'images/magic8ball_8.png';
+let indefiniteInterval = function() {
+    setInterval(changeImage, 1000 * second);
+}
 
-imageArray[8] = new Image();
-imageArray[8].src = 'images/magic8ball_9.png';
+let stopImageChange = function() {
+    clearInterval(interval);
+};
 
-imageArray[9] = new Image();
-imageArray[9].src = 'images/magic8ball_10.png';
+let answers = new Array();
 
-imageArray[10] = new Image();
-imageArray[10].src = 'images/magic8ball_11.png';
+    answers[0] = new Image();
+    answers[0].src = 'images/magic8ball_1.png';
 
-imageArray[11] = new Image();
-imageArray[11].src = 'images/magic8ball_12.png';
+    answers[1] = new Image();
+    answers[1].src = 'images/magic8ball_2.png';
 
-imageArray[12] = new Image();
-imageArray[12].src = 'images/magic8ball_13.png';
+    answers[2] = new Image();
+    answers[2].src = 'images/magic8ball_3.png';
 
-imageArray[13] = new Image();
-imageArray[13].src = 'images/magic8ball_14.png';
+    answers[3] = new Image();
+    answers[3].src = 'images/magic8ball_4.png';
 
-imageArray[14] = new Image();
-imageArray[14].src = 'images/magic8ball_15.png';
+    answers[4] = new Image();
+    answers[4].src = 'images/magic8ball_5.png';
 
-imageArray[15] = new Image();
-imageArray[15].src = 'images/magic8ball_16.png';
+    answers[5] = new Image();
+    answers[5].src = 'images/magic8ball_6.png';
 
-imageArray[16] = new Image();
-imageArray[16].src = 'images/magic8ball_17.png';
+    answers[6] = new Image();
+    answers[6].src = 'images/magic8ball_7.png';
 
-imageArray[17] = new Image();
-imageArray[17].src = 'images/magic8ball_18.png';
+    answers[7] = new Image();
+    answers[7].src = 'images/magic8ball_8.png';
 
-imageArray[18] = new Image();
-imageArray[18].src = 'images/magic8ball_19.png';
+    answers[8] = new Image();
+    answers[8].src = 'images/magic8ball_9.png';
 
-imageArray[19] = new Image();
-imageArray[19].src = 'images/magic8ball_20.png';
+    answers[9] = new Image();
+    answers[9].src = 'images/magic8ball_10.png';
+
+    answers[10] = new Image();
+    answers[10].src ='images/magic8ball_11.png';
+
+    answers[11] = new Image();
+    answers[11].src = 'images/magic8ball_12.png';
+
+    answers[12] = new Image();
+    answers[12].src = 'images/magic8ball_13.png';
+
+    answers[13] = new Image();
+    answers[13].src = 'images/magic8ball_14.png';
+
+    answers[14] = new Image();
+    answers[14].src = 'images/magic8ball_15.png';
+
+    answers[15] = new Image();
+    answers[15].src = 'images/magic8ball_16.png';
+
+    answers[16] = new Image();
+    answers[16].src = 'images/magic8ball_17.png';
+
+    answers[17] = new Image();
+    answers[17].src = 'images/magic8ball_18.png';
+
+    answers[18] = new Image();
+    answers[18].src = 'images/magic8ball_19.png';
+
+    answers[19] = new Image();
+    answers[19].src ='images/magic8ball_20.png';
+
+
+function changeImage() {
+    var firstImage = answers[0].src;
+    for(var i=0;i<answers.length-1;i++){
+        answers[i].src=answers[i+1].src;
+    };
+    answers[answers.length-1].src=firstImage; //replace last image src with first one
+};
+
 
 function addInput(type, placeholder) {
     const input = document.createElement(type);
@@ -79,71 +136,48 @@ function addInput(type, placeholder) {
     input.placeholder = placeholder;
 };
 
+
+eightBallStart();
+
 askButton.addEventListener(('click'), function (event) {
+    stopImageChange();
     event.preventDefault();
-    console.log(randomNumber);
-    switch(randomNumber) {
-        case 1:
-             document.body.appendChild(imageArray[0])
-            break;
-        case 2:
-             document.body.appendChild(imageArray[1])
-            break;
-        case 3:
-             document.body.appendChild(imageArray[2])
-            break;
-        case 4:
-             document.body.appendChild(imageArray[3])
-            break;
-        case 5:
-             document.body.appendChild(imageArray[4])
-            break;
-        case 6:
-             document.body.appendChild(imageArray[5])
-            break;
-        case 7:
-             document.body.appendChild(imageArray[6])
-            break;
-        case 8:
-             document.body.appendChild(imageArray[7])
-            break;
-        case 9:
-             document.body.appendChild(imageArray[8])
-            break;
-        case 10:
-             document.body.appendChild(imageArray[9])
-            break;
-        case 11:
-             document.body.appendChild(imageArray[10])
-            break;
-        case 12:
-             document.body.appendChild(imageArray[11])
-            break;
-        case 13:
-             document.body.appendChild(imageArray[12])
-            break;
-        case 14:
-             document.body.appendChild(imageArray[13])
-            break;
-        case 15:
-             document.body.appendChild(imageArray[14])
-            break;
-        case 16:
-             document.body.appendChild(imageArray[15])
-            break;
-        case 17:
-             document.body.appendChild(imageArray[16])
-            break;
-        case 18:
-             document.body.appendChild(imageArray[17])
-            break;
-        case 19:
-             document.body.appendChild(imageArray[18])
-            break;
-        case 20:
-             document.body.appendChild(imageArray[19])
-            break;
-    }
+    const askInputResponse1 = JSON.stringify(form[0].value);
+    clearAllButTitle();
+    document.body.replaceChild(div, form);
+    div.append(h2);
+    h2.innerText = askInputResponse1;
+    div.appendChild(askButton2);
+    document.body.appendChild(answers[randomNumber]);
 });
 
- 
+askButton2.addEventListener(('click'), function (event) {
+    event.preventDefault();
+    clearAllButTitle();
+    form.innerHTML = '';
+    const askInput2 = addInput('input', "I've got the answers.");
+    form.appendChild(askButton3);
+    eightBallStart();
+    div.appendChild(h2);
+    h2.style.display = 'none';
+    newInterval();
+});
+
+askButton3.addEventListener(('click'), function (event) {
+    const askInputResponse2 = JSON.stringify(form[0].value);
+    if (h2.innerText === askInputResponse2) {
+        event.preventDefault();
+        alert('Asking the question again will not change your future.');
+    } else {
+        event.preventDefault();
+        clearAllButTitle();
+        document.body.replaceChild(div, form);
+        div.append(h3);
+        h3.innerText = askInputResponse2;
+        div.appendChild(askButton4);
+        document.body.appendChild(answers[randomNumber]);
+        askButton4.addEventListener(('click'), function() {
+            window.location.reload();
+        });
+    };
+});
